@@ -24,6 +24,13 @@ category Unix
 
 処理が終了したときは [[m:Etc.#endgrent]] を呼び出すようにしてください。
 
+#@samplecode
+require 'etc'
+
+p Etc.getgrent  #=> #<struct Etc::Group name="root", passwd="x", gid=0, mem=[]>
+p Etc.getgrent  #=> #<struct Etc::Group name="daemon", passwd="x", gid=1, mem=[]>
+#@end
+
 @see [[man:getgrent(3)]], [[c:Struct::Group]]
 
 --- endgrent -> nil
@@ -49,6 +56,13 @@ category Unix
 呼び出す度に次のエントリを順に返します。ファイルの終端に達すると nil を返します。
 
 処理が終了したときは [[m:Etc.#endpwent]] を呼び出すようにしてください。
+
+#@samplecode
+require 'etc'
+
+p Etc.getpwent  #=> #<struct Etc::Passwd name="root", passwd="x", uid=0, gid=0, gecos="root", dir="/root", shell="/bin/bash">
+p Etc.getpwent  #=> #<struct Etc::Passwd name="daemon", passwd="x", uid=1, gid=1, gecos="daemon", dir="/usr/sbin", shell="/usr/sbin/nologin">
+#@end
 
 @see [[man:getpwent(3)]]
 
@@ -104,6 +118,13 @@ passwd データベースを検索し、
 
 @raise ArgumentError エントリが見つからなかった場合に発生します。
 
+#@samplecode 例
+require 'etc'
+
+p Etc.getpwuid(0)
+#=> #<struct Etc::Passwd name="root", passwd="x", uid=0, gid=0, gecos="root", dir="/root", shell="/bin/bash">
+#@end
+
 @see [[man:getpwuid(3)]], [[c:Struct::Passwd]]
 
 --- getgrgid(gid) -> Struct::Group
@@ -115,6 +136,13 @@ group データベースを検索し、グループ ID が gid
 
 @raise ArgumentError エントリが見つからなかった場合に発生します。
 
+#@samplecode 例
+require 'etc'
+
+p Etc.getgrgid(0)
+# => #<struct Etc::Group name="root", passwd="x", gid=0, mem=[]>
+#@end
+
 @see [[man:getgrgid(3)]], [[c:Struct::Group]]
 
 --- getgrnam(name) -> Struct::Group
@@ -124,6 +152,13 @@ name という名前のグループエントリを返します。
 @param name 検索するグループ名。
 
 @raise ArgumentError エントリが見つからなかった場合に発生します。
+
+#@samplecode 例
+require 'etc'
+
+p Etc.getgrnam('root')
+# => #<struct Etc::Group name="root", passwd="x", gid=0, mem=[]>
+#@end
 
 @see [[man:getgrnam(3)]], [[c:Struct::Group]]
 
@@ -135,6 +170,13 @@ name という名前のグループエントリを返します。
 呼び出す度に次のエントリを順に返します。ファイルの終端に達すると nil を返します。
 
 @raise RuntimeError /etc/group ファイルがロックされている場合に発生します。
+
+#@samplecode 例
+require 'etc'
+
+p Etc.group  #=> #<struct Etc::Group name="root", passwd="x", gid=0, mem=[]>
+p Etc.group  #=> #<struct Etc::Group name="daemon", passwd="x", gid=1, mem=[]>
+#@end
 
 @see [[m:Etc.#getgrent]], [[man:getgrent(3)]]
 
@@ -150,6 +192,13 @@ name という名前のグループエントリを返します。
 呼び出す度に次のエントリを順に返します。ファイルの終端に達すると nil を返します。
 
 @raise RuntimeError /etc/passwd ファイルがロックされている場合に発生します。
+
+#@samplecode 例
+require 'etc'
+
+p Etc.passwd  #=> #<struct Etc::Passwd name="root", passwd="x", uid=0, gid=0, gecos="root", dir="/root", shell="/bin/bash">
+p Etc.passwd  #=> #<struct Etc::Passwd name="daemon", passwd="x", uid=1, gid=1, gecos="daemon", dir="/usr/sbin", shell="/usr/sbin/nologin">
+#@end
 
 @see [[m:Etc.#getpwent]], [[man:getpwent(3)]]
 
