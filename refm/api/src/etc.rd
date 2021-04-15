@@ -251,7 +251,9 @@ p Etc.systmpdir # => "/tmp"
 
 #@samplecode
 require 'etc'
+#@until 2.5.0
 require 'pp'
+#@end
 
 pp Etc.uname
 # => {:sysname=>"Linux",
@@ -510,14 +512,21 @@ p Etc.nprocessors #=> 4
 #@end
 
 = class Etc::Group < Struct
-#@since 1.9.1
 alias Struct::Group
-#@end
 [[m:Etc.#getgrent]] で得られる構造体。
 
-この構造体の値を変更してもシステムには反映されません。
+#@samplecode
+require 'etc'
 
-#@since 1.9.2
+group = Etc.getgrent #=> #<struct Etc::Group name="root", passwd="x", gid=0, mem=[]>
+
+group.gid     #=> 0
+group.mem     #=> []
+group.name    #=> "root"
+group.passwd  #=> "x"
+#@end
+
+この構造体の値を変更してもシステムには反映されません。
 
 == Class Methods
 
@@ -528,8 +537,6 @@ alias Struct::Group
 ブロックを省略した場合は [[c:Enumerator]] のインスタンスを返します。
 
 @see [[m:Etc.#getpwent]]
-
-#@end
 
 == Instance Methods
 
@@ -553,7 +560,6 @@ alias Struct::Group
 
 グループ名を設定します。
 
-
 --- name=(name)
 
 グループ名を返します。
@@ -571,10 +577,20 @@ alias Struct::Group
 このグループのパスワードを設定します。
 
 = class Etc::Passwd < Struct
-#@since 1.9.1
 alias Struct::Passwd
-#@end
 [[m:Etc.#getpwent]] で得られる構造体。
+
+#@samplecode
+require 'etc'
+p user = Etc.getpwent
+
+p user.dir
+p user.gecos
+p user.name
+p user.passwd
+p user.shell
+p user.uid
+#@end
 
 この構造体の値を変更してもシステムには反映されません。
 
@@ -595,8 +611,6 @@ alias Struct::Passwd
   * comment
   * expire
 
-#@since 1.9.2
-
 == Class Methods
 
 --- each {|entry| ... } -> Etc::Passwd
@@ -606,8 +620,6 @@ alias Struct::Passwd
 ブロックを省略した場合は [[c:Enumerator]] のインスタンスを返します。
 
 @see [[m:Etc.#getpwent]]
-
-#@end
 
 == Instance Methods
 
