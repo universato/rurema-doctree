@@ -107,14 +107,6 @@ i 番目の要素を返します。インデックスは 0 から開始します
 @param i 取得する要素のインデックスを整数値で指定します。
          インデックスは 0 から始めます。
 
-#@# for internal use
-#@# --- init_elements(array, copy) -> Array
-#@# ベクトルの要素を引数 array で初期化します。
-#@#
-#@# @param array ベクトルとして初期化する Array を指定します。
-#@# @param copy  引数array で渡された配列をコピーするかをtrue/falseで指定します。
-#@#              true の場合はコピーします。
-
 --- size -> Integer
 
 ベクトルの要素数(次元)を返します。
@@ -179,15 +171,6 @@ p v #=> Vector[0, 3, 6, 9, 0]
 自分自身と引数 v を比較し、true/false を返します。
 
 @param v 比較対象ベクトル
-
-
-#@# for internal use
-#@# --- compare_by(elements) -> bool
-#@#
-#@# 自分自身と引数 elements を配列として比較します。
-#@#
-#@# @param elements 比較する配列。
-#@# @return 比較結果が(配列として)同じものあったときは true をそれ以外は false を返します。
 
 --- *(other) -> Vector
 
@@ -322,8 +305,10 @@ Vector[1, 0].angle_with(Vector[0, 1]) # => Math::PI/2
 
 self とベクトルの列 vectors が線形独立であれば true を返します。
 
-  require 'matrix'
-  Vector.independent?(self, *vectors)
+#@samplecode
+require 'matrix'
+Vector.independent?(self, *vectors)
+#@end
 
 と同じです。
 
@@ -558,10 +543,6 @@ p v.elements_to_r
 --- hash -> Integer
 
 自分自身のハッシュ値を返します。
-
---- clone -> Vector
-
-自分自身をコピーしたベクトルを返します。
 
 --- inspect -> String
 
