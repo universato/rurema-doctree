@@ -86,6 +86,17 @@ nil.to_i   #=> 0
 nil.to_s   # => ""
 #@end
 
+--- inspect -> String
+
+空文字列 "nil" を返します。
+[[m:Kernel.#p]] の内部で利用されます。
+
+#@samplecode 例
+nil.inspect   # => "nil"
+#@end
+
+@see [[m:Object#inspect]], [[m:Kernel.#p]]
+
 #@since 1.9.1
 --- to_c -> Complex
 
