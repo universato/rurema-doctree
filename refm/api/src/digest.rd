@@ -29,8 +29,17 @@ ASCIIコードを使って16進数の列を示す文字列にエンコードし�
 
 使用例(MD5の場合)
 
-        require 'digest/md5'
-        Digest::MD5.hexdigest("ruby") # => "58e53d1324eef6265fdb97b08ed9aadf"
+#@samplecode
+require 'digest/md5'
+
+p Digest.hexencode("") # => ""
+p Digest.hexencode("\1\2") # => "0102"
+p Digest.hexencode("\xB0") # => "b0"
+
+p digest = Digest::MD5.digest("ruby")   # => "X\xE5=\x13$\xEE\xF6&_\xDB\x97\xB0\x8E\xD9\xAA\xDF"
+p Digest.hexencode(digest)              # => "58e53d1324eef6265fdb97b08ed9aadf"
+p Digest::MD5.hexdigest("ruby")         # => "58e53d1324eef6265fdb97b08ed9aadf"
+#@end
 
 @see [[m:Digest::Base#hexdigest]]
 
@@ -99,7 +108,7 @@ new(str).digest と等価です。
 
 --- hexdigest(str) -> String
 
-与えられた文字列に対するハッシュ値を、ASCIIコードを使って
+ハッシュ値を表す文字列を、ASCIIコードを使って
 16進数の列を示す文字列にエンコードして返します。
 new(str).hexdigest と等価です。
 
@@ -346,4 +355,3 @@ m.update(a + b) と、 m << a << b は m << a + b とそれぞれ等価
   for a in ["MD5", "SHA1", "SHA512"]
     p Digest(a) # => Digest::MD5, Digest::SHA1, Digest::SHA512
   end
-
