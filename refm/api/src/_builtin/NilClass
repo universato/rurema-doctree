@@ -46,6 +46,17 @@ nil ^ nil   # => false
 nil ^ "a"   # => true
 #@end
 
+--- ===(other) -> bool
+
+other が nil なら true を, そうでないなら false を返します。
+
+#@samplecode 例
+nil === nil    # => true
+nil === true   # => false
+nil === false  # => false
+nil === 1234   # => false
+#@end
+
 --- nil? -> bool
 
 常に true を返します。
