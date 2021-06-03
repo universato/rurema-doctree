@@ -1,5 +1,3 @@
-category Development
-
 sublibrary minitest/autorun
 
 ユニットテストを行うためのライブラリです。
@@ -37,9 +35,9 @@ sublibrary minitest/autorun
 
   require 'minitest/unit'
   require 'foo'
-  
+
   MiniTest::Unit.autorun
-  
+
   class TestFoo < MiniTest::Unit::TestCase
     def setup
       @foo = Foo.new
@@ -48,11 +46,11 @@ sublibrary minitest/autorun
     def teardown
       @foo = nil
     end
-  
+
     def test_foo
       assert_equal "foo", @foo.foo
     end
-  
+
     def test_bar
       assert_equal "bar", @foo.bar
     end
@@ -73,11 +71,11 @@ sublibrary minitest/autorun
   Started
   F.
   Finished in 0.000940 seconds.
-  
+
     1) Failure:
   test_bar(TestFoo) [test_foo.rb:20]:
   Expected "bar", not "foo".
-  
+
   2 tests, 2 assertions, 1 failures, 0 errors, 0 skips
 
 test_bar だけテストしたい場合は以下のようなオプションを与えます。
@@ -87,11 +85,11 @@ test_bar だけテストしたい場合は以下のようなオプションを�
   Started
   F
   Finished in 0.000820 seconds.
-  
+
     1) Failure:
   test_bar(TestFoo) [test_foo.rb:20]:
   Expected "bar", not "foo".
-  
+
   1 tests, 1 assertions, 1 failures, 0 errors, 0 skips
 
 コンソールを使った testrunner のみ提供されています。

@@ -1,5 +1,3 @@
-category Development
-
 シンプルなモックライブラリです。
 
 #@since 2.2.0
