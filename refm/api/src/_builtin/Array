@@ -2054,7 +2054,7 @@ p [].transpose
 
 p [1,2,3].transpose
 
-# => -:1:in `transpose': cannot convert Fixnum into Array (TypeError)
+# => -:1:in `transpose': cannot convert Integer into Array (TypeError)
 #       from -:1
 
 p [[1,2],
