@@ -1076,16 +1076,6 @@ p ary.collect {|v| v.object_id } # => [537770124, 537770112, 537770100]
 
 @param range val を設定する範囲を [[c:Range]] オブジェクトで指定します。
 
-#@##@since 1.8.0
-#@#version 1.8.0 には、ブロックに渡されるパラ
-#@#メータが仕様と異なる不具合がありました。
-#@#
-#@#    ary = []
-#@#    p ary.fill(1..2) {|i| i}         # => [2, 4, 6]  <- bug
-#@#    p ary.fill(0,3) {|i| i}          # => [1, 3, 5]  <- bug
-#@#    p ary.fill { "foo" }             # => ["foo", "foo", "foo"]
-#@#    p ary.collect {|v| v.object_id } # => [537770124, 537770112, 537770100]
-#@##@end
 
 --- first       -> object | nil
 
