@@ -108,7 +108,6 @@ nil.inspect   # => "nil"
 
 @see [[m:Object#inspect]], [[m:Kernel.#p]]
 
-#@since 1.9.1
 --- to_c -> Complex
 
 0+0i を返します。
@@ -125,9 +124,6 @@ nil.to_c # => (0+0i)
 nil.to_r # => (0/1)
 #@end
 
-#@end
-
-#@since 1.9.2
 --- rationalize      -> Rational
 --- rationalize(eps) -> Rational
 
@@ -143,9 +139,6 @@ nil.rationalize(100) # => (0/1)
 nil.rationalize(0.1) # => (0/1)
 #@end
 
-#@end
-
-#@since 2.0.0
 --- to_h -> {}
 
 {} を返します。
@@ -153,7 +146,7 @@ nil.rationalize(0.1) # => (0/1)
 #@samplecode 例
 nil.to_h   #=> {}
 #@end
-#@end
+
 #@since 2.6.0
 --- =~(other) -> nil
 
