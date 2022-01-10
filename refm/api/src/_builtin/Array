@@ -1956,8 +1956,6 @@ p ary.values_at( 6..7 )             #=> [nil, nil]
 p ary.values_at( 0, 3..5 )          #=> ["a", "d", "e", nil]
 #@end
 
-#@# ([[m:Array#indexes]], [[m:Array#indices]] と同じです)
-
 
 --- zip(*lists)  -> [[object]]
 --- zip(*lists) {|v1, v2, ...| ...} -> nil
