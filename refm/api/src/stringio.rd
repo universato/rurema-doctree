@@ -231,7 +231,7 @@ a.each_byte{|ch| p ch }
 
 何もせずに 0 を返します。
 
-#@since 1.9.1
+
 --- getc    -> String | nil
 
 自身から 1 文字読み込んで、その文字を返します。
@@ -246,11 +246,8 @@ a.getc                   # => "h"
 a.getc                   # => "o"
 a.getc                   # => nil
 #@end
-#@end
 
-#@until 1.9.1
---- getc    -> Integer | nil
-#@end
+
 --- getbyte -> Integer | nil
 
 自身から 1 文字読み込んで、その文字に対応する Fixnum を返します。
@@ -300,12 +297,7 @@ $_                      #=> nil
 
 @param n 行番号を整数で指定します。
 
-#@until 1.9.2
---- path    -> nil
 
-StringIO には対応するパスはないので nil を返します。
-
-#@end
 --- pid    -> nil
 
 何もせず nil を返します。
@@ -536,16 +528,9 @@ p sio.read                      #=> "foo"
 --- sysread                  -> String
 --- sysread(len)             -> String
 --- sysread(len, outbuf)     -> String
-#@since 1.9.1
 --- readpartial               -> String
 --- readpartial(len)          -> String
 --- readpartial(len, outbuf)  -> String
-#@end
-#@since 1.9.2
-#@until 2.1.0
---- read_nonblock(maxlen, outbuf = nil) -> String
-#@end
-#@end
 
 自身から len バイト読み込んで返します。
 [[m:StringIO#read]] と同じです。ただし、文字列の終端に達した場合、EOFError を投げます。
@@ -559,7 +544,6 @@ p sio.read                      #=> "foo"
 
 @raise EOFError 文字列の終端に達した場合に発生します。
 
-#@since 2.1.0
 --- read_nonblock(maxlen, outbuf = nil, exception: true) -> String | nil
 
 [[m:StringIO#read]]に似ていますが、 exception オプションに false を指定すると EOFError を発生させず nil を返します。
@@ -576,12 +560,9 @@ p sio.read                      #=> "foo"
 
 @raise EOFError 文字列の終端に達した場合に発生します。
 
-#@end
 
 --- syswrite(obj)    -> Integer
-#@since 1.9.2
 --- write_nonblock(obj) -> Integer
-#@end
 
 自身に obj を書き込みます。[[m:StringIO#write]] と同じです。
 
@@ -614,7 +595,7 @@ a.string                       #=> "ho\000\000\000"
 
 何もせず false を返します。
 
-#@since 1.9.1
+
 --- ungetc(str_or_int)    -> nil
 文字列か整数で指定された str_or_int を自身に書き戻します。
 nil を返します。
@@ -654,42 +635,8 @@ p s.string   # => "hoge\000\000\000A"
 p s.pos      # => 7
 #@end
 
-#@else
---- ungetc(ch)    -> nil
 
-整数で指定された文字 ch を自身に書き戻します。
-nil を返します。
-
-何回でも書き戻すことが可能です。
-現在位置が自身のサイズよりも大きい場合は、自身をリサイズしてから、ch を書き戻します。
-また現在位置が 0 である場合は何も行いません。
-
-@param ch 書き戻したい文字を整数で指定します。複数の文字を書き戻す事も
-          できます。
-
-@raise IOError 自身が読み込み可能でない時に発生します。
-
-#@samplecode
-require "stringio"
-s = StringIO.new("hoge")
-s.pos = 1
-s.ungetc(?H)
-p s.string   #=> "Hoge"
-p s.pos        #=> 0
-
-s = StringIO.new("hoge")
-s.pos = 8
-s.ungetc(?A)
-p s.string   #=> "hoge\000\000\000A"
-p s.pos        #=> 7
-#@end
-#@end
-
-#@since 2.5.0
 --- write(*obj)    -> Integer
-#@else
---- write(obj)    -> Integer
-#@end
 
 自身に obj を書き込みます。obj が文字列でなければ to_s による文字列化を試みます。
 書き込まれた文字列の長さを返します。
@@ -723,7 +670,7 @@ a.string                       #=> "aaae"
 
 @see [[m:IO#each_char]]
 
-#@since 1.9.1
+
 --- ungetbyte(char) -> nil
 
 指定された char を読み戻します。
@@ -734,18 +681,14 @@ a.string                       #=> "aaae"
 
 @see [[m:IO#ungetbyte]]
 
-#@since 1.9.3
+
 --- set_encoding(ext_enc)               -> self
 --- set_encoding(ext_enc, int_enc)      -> self
 --- set_encoding(ext_enc, int_enc, opt) -> self
-#@else
---- set_encoding(ext_enc) -> self
-#@end
 
 自身のエンコーディングを指定されたエンコーディングに設定します。
 
 @param ext_enc エンコーディングを指定します。
-#@since 1.9.3
                nil を指定した場合は [[m:Encoding.default_external]] が
                使われます。
 
@@ -754,7 +697,6 @@ a.string                       #=> "aaae"
 
 @param opt 無視されます。[[c:IO]] クラスの API との互換性のために用意さ
            れています。
-#@end
 
 --- external_encoding -> Encoding
 
@@ -774,4 +716,3 @@ a.string                       #=> "aaae"
 自身の各コードポイントに対して繰り返します。
 
 @see [[m:IO#each_codepoint]]
-#@end
